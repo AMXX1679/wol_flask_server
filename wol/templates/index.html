@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wake-on-LAN</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; }
+        input[type="text"] { padding: 10px; width: 200px; }
+        input[type="submit"] { padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Wake-on-LAN Tool</h1>
+    <form id="wol-form" method="POST" action="/wake">
+        <label for="mac_address">MAC-Adresse:</label>
+        <input type="text" id="mac_address" name="mac_address" required>
+        <input type="submit" value="PC starten">
+    </form>
+    <div id="result"></div>
+
+    <script>
+        const form = document.getElementById('wol-form');
+        form.onsubmit = async (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            document.getElementById('result').innerText = result.message;
+        };
+    </script>
+</body>
+</html>
