@@ -84,10 +84,6 @@ These are listed in `requirements.txt` and can be installed with `pip install -r
   ```bash
   curl -X POST http://localhost:5000/api/wake -d "mac_address=XX:XX:XX:XX:XX:XX"
   ```
-
-## 📖 License
-This project is licensed under the MIT License.
-
 ---
 
 ### 💡 Tips
